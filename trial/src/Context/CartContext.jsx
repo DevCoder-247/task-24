@@ -6,7 +6,7 @@ export const CartContext = createContext();
 // Create a provider component
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const [showPayment, setShowPayment] = useState(false);
+  // const [showPayment, setShowPayment] = useState(false);
 
   const addToCart = (product) => {
     setCart((prevCart) => {
@@ -40,9 +40,9 @@ export const CartProvider = ({ children }) => {
 
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
-  const togglePaymentSection = () => {
-    setShowPayment((prev) => !prev); 
-  };
+  // const togglePaymentSection = () => {
+  //   setShowPayment((prev) => !prev); 
+  // };
 
   const products = [
     { id: 1, name: 'White Casual Sneaker', price: 70, img: '/Images/shoe1.jpeg' },
@@ -63,9 +63,9 @@ export const CartProvider = ({ children }) => {
         addToCart,
         incrementQuantity,
         decrementQuantity,
-        totalPrice,
-        showPayment,
-        togglePaymentSection
+        totalPrice
+        // showPayment,
+        // togglePaymentSection
       }}
     >
       {children}

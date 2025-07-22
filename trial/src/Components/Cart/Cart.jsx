@@ -1,11 +1,12 @@
 import React from 'react'
 import { useContext } from 'react'
 import { CartContext } from '../../Context/CartContext'
+import { useNavigate } from 'react-router-dom';
 
 function Cart() {
 
   const {cart, incrementQuantity, decrementQuantity, totalPrice, showPayment, togglePaymentSection} = useContext(CartContext);
-
+  const navigate = useNavigate();
   return (
     <div className="w-1/3 bg-gray-50 shadow-md p-6 rounded-lg h-max mt-15 ">
     <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">Cart</h2>
@@ -58,7 +59,9 @@ function Cart() {
             Total: ${totalPrice.toFixed(2)}
           </p>
           <button
-            onClick={togglePaymentSection}
+            onClick={()=>{
+              navigate("/payment")
+            }}
             className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
           >
             {showPayment ? 'Continue Shopping' : 'Proceed to pay'}
